@@ -81,7 +81,7 @@ footer{text-align:center;padding:40px;background:black;}
 <div id="adminLogin" style="display:none;">
 <h2>Login Admin</h2>
 <input type="text" id="adminNome" placeholder="Nome">
-<input type="text" id="adminSenha" placeholder="Data nascimento">
+<input type="text" id="adminSenha" placeholder="Senha">
 <button onclick="loginAdmin()">Entrar Admin</button>
 </div>
 
@@ -163,20 +163,13 @@ function loginAdmin(){
 const nome=document.getElementById("adminNome").value;
 const senha=document.getElementById("adminSenha").value;
 
-const adminSalvo=JSON.parse(localStorage.getItem("admin"));
-
-if(!adminSalvo){
-localStorage.setItem("admin",JSON.stringify({nome,senha}));
-alert("Admin cadastrado!");
-}else{
-if(nome!==adminSalvo.nome||senha!==adminSalvo.senha){
-alert("Dados incorretos");
-return;
-}
-}
-
+// Senha fixa
+if(nome==="login" && senha==="12345"){
 localStorage.setItem("adminAtivo","true");
 mostrarSite();
+}else{
+alert("Nome ou senha incorretos!");
+}
 }
 
 /* MOSTRAR SITE */
@@ -191,7 +184,6 @@ document.getElementById("logoutBtn").style.display="block";
 function sair(){
 localStorage.removeItem("usuarioAtivo");
 localStorage.removeItem("adminAtivo");
-
 document.getElementById("site").style.display="none";
 document.getElementById("logoutBtn").style.display="none";
 document.getElementById("entrada").style.display="flex";
