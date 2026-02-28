@@ -15,10 +15,14 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
-body{
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-color:white;
+html{
 scroll-behavior:smooth;
+scroll-padding-top:100px; /* CORREÇÃO DO PROBLEMA */
+}
+
+body{
+background:#0f2027;
+color:white;
 }
 
 /* NAVBAR */
@@ -26,13 +30,13 @@ nav{
 position:fixed;
 width:100%;
 top:0;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
+background:rgba(0,0,0,0.85);
+padding:20px;
 display:flex;
 justify-content:center;
 gap:40px;
-padding:18px;
 z-index:1000;
+border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 nav a{
@@ -55,10 +59,11 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 }
 
 header h1{
-font-size:55px;
+font-size:50px;
 font-weight:700;
 }
 
@@ -69,14 +74,13 @@ color:#00c6ff;
 header p{
 margin-top:15px;
 opacity:0.9;
-font-size:18px;
 }
 
 .btn{
 display:inline-block;
 padding:14px 28px;
 border-radius:40px;
-margin:20px 10px 0 10px;
+margin:25px 10px 0 10px;
 text-decoration:none;
 font-weight:600;
 transition:0.3s;
@@ -103,9 +107,17 @@ color:black;
 
 /* SECTIONS */
 section{
+min-height:100vh; /* CADA BLOCO OCUPA UMA TELA */
 padding:120px 20px;
+display:flex;
+flex-direction:column;
+justify-content:center;
 max-width:1100px;
 margin:auto;
+}
+
+section:nth-child(even){
+background:#112b3c;
 }
 
 h2{
@@ -118,16 +130,15 @@ padding-left:15px;
 /* CARDS */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
 
 .card{
-background:rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.07);
 padding:30px;
 border-radius:20px;
-transition:0.4s;
-backdrop-filter:blur(10px);
+transition:0.3s;
 }
 
 .card:hover{
@@ -139,10 +150,10 @@ background:rgba(255,255,255,0.15);
 footer{
 text-align:center;
 padding:40px;
-background:rgba(0,0,0,0.5);
+background:black;
 }
 
-/* WHATSAPP FLOAT */
+/* WHATSAPP */
 .whatsapp{
 position:fixed;
 bottom:25px;
@@ -154,17 +165,10 @@ border-radius:50px;
 text-decoration:none;
 font-weight:bold;
 box-shadow:0 5px 15px rgba(0,0,0,0.4);
-animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.1);}
-100%{transform:scale(1);}
 }
 
 @media(max-width:768px){
-header h1{font-size:35px;}
+header h1{font-size:32px;}
 nav{gap:15px;}
 }
 </style>
@@ -181,7 +185,7 @@ nav{gap:15px;}
 
 <header>
 <h1>Joanderson <span>Leal</span></h1>
-<p>Professor de Informática • Tecnologia • Educação • Programação</p>
+<p>Professor de Informática • Tecnologia • Educação</p>
 
 <a href="https://github.com/Joanderson192" target="_blank" class="btn btn-primary">
 GitHub
@@ -195,75 +199,62 @@ Fale Comigo
 <section id="sobre">
 <h2>Sobre Mim</h2>
 <div class="card">
-Sou cristão, apaixonado por ensinar e transformar vidas através da tecnologia.
-Técnico em Informática pelo IFBA.
-Estudante de Redes de Computadores.
-Busco crescimento profissional na área Tech e atuação remota.
+Sou cristão, Técnico em Informática pelo IFBA, estudante de Redes de Computadores e apaixonado por tecnologia e ensino.
+Meu objetivo é crescer na área tech e atuar profissionalmente também de forma remota.
 </div>
 </section>
 
 <section id="projetos">
 <h2>Projetos</h2>
 <div class="grid">
-
 <div class="card">
 <h3>Sistema de Leads em Python</h3>
-<p>Automação e gerenciamento de clientes utilizando programação.</p>
+Automação para gerenciamento de clientes.
 </div>
-
 <div class="card">
-<h3>Projetos Avançados em Excel</h3>
-<p>Planilhas inteligentes com organização, automação e análise de dados.</p>
+<h3>Excel Avançado</h3>
+Planilhas automatizadas e análise de dados.
 </div>
-
 </div>
 </section>
 
 <section id="habilidades">
-<h2>Habilidades Técnicas</h2>
+<h2>Habilidades</h2>
 <div class="grid">
-
 <div class="card">
-<h3>Sistemas Operacionais</h3>
 Windows 10/11 – Avançado<br>
 Linux Ubuntu – Básico
 </div>
-
 <div class="card">
-<h3>Ferramentas</h3>
 Excel – Avançado<br>
-Pacote Office<br>
-CRM
+Pacote Office
 </div>
-
 <div class="card">
-<h3>Programação</h3>
 Python – Básico<br>
 HTML – Intermediário<br>
 CSS – Básico
 </div>
-
 </div>
 </section>
 
 <section id="contato">
 <h2>Contato</h2>
 <div class="card">
-📍 Santo Estêvão – BA<br><br>
-📧 Joandersonleal192@gmail.com<br><br>
-📸 Instagram: @Jo.andersonleal
+📍 Santo Estêvão – BA<br>
+📧 Joandersonleal192@gmail.com<br>
+📸 @Jo.andersonleal
 </div>
 
-<a href="https://wa.me/5575983534628?text=Olá%20Professor%20Joanderson,%20vi%20seu%20portfólio%20e%20quero%20falar%20com%20você."
+<a href="https://wa.me/5575983534628?text=Olá%20Professor%20Joanderson,%20vi%20seu%20portfólio"
 target="_blank"
 class="btn btn-primary">
-Falar no WhatsApp
+WhatsApp
 </a>
 
 </section>
 
 <footer>
-© 2026 Joanderson Leal | Desenvolvido por Joanderson
+© 2026 Joanderson Leal
 </footer>
 
 <a href="https://wa.me/5575983534628?text=Olá%20Professor%20Joanderson"
