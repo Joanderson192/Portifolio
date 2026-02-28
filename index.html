@@ -9,172 +9,208 @@
 
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
 }
 
 html{
-scroll-behavior:smooth;
-scroll-padding-top:100px; /* CORREÇÃO DO PROBLEMA */
+  scroll-behavior:smooth;
+  scroll-padding-top:100px;
 }
 
 body{
-background:#0f2027;
-color:white;
+  background:#0f2027;
+  color:white;
+}
+
+/* TELA DE ENTRADA */
+#entrada {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(15,32,39,0.95);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:10000;
+}
+#entrada h2{
+  margin-bottom:20px;
+  color:#00c6ff;
+}
+#entrada input{
+  padding:10px 15px;
+  margin:10px 0;
+  border-radius:8px;
+  border:none;
+  width:250px;
+}
+#entrada button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:#00c6ff;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+#entrada button:hover{
+  background:white;
 }
 
 /* NAVBAR */
 nav{
-position:fixed;
-width:100%;
-top:0;
-background:rgba(0,0,0,0.85);
-padding:20px;
-display:flex;
-justify-content:center;
-gap:40px;
-z-index:1000;
-border-bottom:1px solid rgba(255,255,255,0.1);
+  position:fixed;
+  width:100%;
+  top:0;
+  background:rgba(0,0,0,0.85);
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,0.1);
 }
-
 nav a{
-color:white;
-text-decoration:none;
-font-weight:500;
-transition:0.3s;
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
 }
-
 nav a:hover{
-color:#00c6ff;
+  color:#00c6ff;
 }
 
 /* HERO */
 header{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 }
-
 header h1{
-font-size:50px;
-font-weight:700;
+  font-size:50px;
+  font-weight:700;
 }
-
 header span{
-color:#00c6ff;
+  color:#00c6ff;
 }
-
 header p{
-margin-top:15px;
-opacity:0.9;
+  margin-top:15px;
+  opacity:0.9;
 }
-
 .btn{
-display:inline-block;
-padding:14px 28px;
-border-radius:40px;
-margin:25px 10px 0 10px;
-text-decoration:none;
-font-weight:600;
-transition:0.3s;
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:40px;
+  margin:25px 10px 0 10px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
 }
-
 .btn-primary{
-background:#00c6ff;
-color:black;
+  background:#00c6ff;
+  color:black;
 }
-
 .btn-primary:hover{
-background:white;
+  background:white;
 }
-
 .btn-outline{
-border:2px solid #00c6ff;
-color:white;
+  border:2px solid #00c6ff;
+  color:white;
 }
-
 .btn-outline:hover{
-background:#00c6ff;
-color:black;
+  background:#00c6ff;
+  color:black;
 }
 
 /* SECTIONS */
 section{
-min-height:100vh; /* CADA BLOCO OCUPA UMA TELA */
-padding:120px 20px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-max-width:1100px;
-margin:auto;
+  min-height:100vh;
+  padding:120px 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  max-width:1100px;
+  margin:auto;
 }
-
 section:nth-child(even){
-background:#112b3c;
+  background:#112b3c;
 }
-
 h2{
-margin-bottom:40px;
-font-size:32px;
-border-left:5px solid #00c6ff;
-padding-left:15px;
+  margin-bottom:40px;
+  font-size:32px;
+  border-left:5px solid #00c6ff;
+  padding-left:15px;
 }
 
 /* CARDS */
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
 }
-
 .card{
-background:rgba(255,255,255,0.07);
-padding:30px;
-border-radius:20px;
-transition:0.3s;
+  background:rgba(255,255,255,0.07);
+  padding:30px;
+  border-radius:20px;
+  transition:0.3s;
 }
-
 .card:hover{
-transform:translateY(-8px);
-background:rgba(255,255,255,0.15);
+  transform:translateY(-8px);
+  background:rgba(255,255,255,0.15);
 }
 
 /* FOOTER */
 footer{
-text-align:center;
-padding:40px;
-background:black;
+  text-align:center;
+  padding:40px;
+  background:black;
 }
 
 /* WHATSAPP */
 .whatsapp{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#25D366;
-color:white;
-padding:16px 22px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-box-shadow:0 5px 15px rgba(0,0,0,0.4);
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25D366;
+  color:white;
+  padding:16px 22px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+  box-shadow:0 5px 15px rgba(0,0,0,0.4);
 }
 
 @media(max-width:768px){
-header h1{font-size:32px;}
-nav{gap:15px;}
+  header h1{font-size:32px;}
+  nav{gap:15px;}
 }
 </style>
 </head>
 
 <body>
+
+<!-- TELA DE ENTRADA -->
+<div id="entrada">
+  <h2>Bem-vindo! Informe seu nome e idade</h2>
+  <input type="text" id="nome" placeholder="Seu nome">
+  <input type="number" id="idade" placeholder="Sua idade">
+  <button onclick="entrar()">Entrar</button>
+</div>
+
+<!-- CONTEÚDO DO SITE -->
+<div id="site" style="display:none;">
 
 <nav>
 <a href="#sobre">Sobre</a>
@@ -262,6 +298,24 @@ target="_blank"
 class="whatsapp">
 WhatsApp
 </a>
+
+</div>
+
+<script>
+function entrar() {
+  const nome = document.getElementById('nome').value.trim();
+  const idade = document.getElementById('idade').value.trim();
+  
+  if(nome === "" || idade === "") {
+    alert("Por favor, preencha nome e idade.");
+    return;
+  }
+
+  // Aqui você pode usar o nome e idade para mostrar mensagens
+  document.getElementById('site').style.display = "block";
+  document.getElementById('entrada').style.display = "none";
+}
+</script>
 
 </body>
 </html>
