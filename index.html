@@ -3,50 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joanderson Leal | Portfólio</title>
+<title>Joanderson Leal | Portfólio Personalizável</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-html{scroll-behavior:smooth;scroll-padding-top:100px;}
 body{background:#0f2027;color:white;}
-#entrada,#adminLogin{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,32,39,0.97);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:10000;}
-#entrada input,#adminLogin input{padding:10px 15px;margin:10px 0;border-radius:8px;border:none;width:250px;}
-button{padding:12px 25px;border:none;border-radius:30px;background:#00c6ff;color:black;font-weight:bold;cursor:pointer;}
-button:hover{background:white;}
-nav{position:fixed;width:100%;top:0;background:rgba(0,0,0,0.85);padding:20px;display:flex;justify-content:center;gap:40px;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.1);}
-nav a{color:white;text-decoration:none;font-weight:500;}
-nav a:hover{color:#00c6ff;}
 header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);}
 header h1{font-size:50px;font-weight:700;}
 header span{color:#00c6ff;}
 header p{margin-top:15px;opacity:0.9;}
-#logoutBtn{position:fixed;top:20px;right:20px;background:red;color:white;z-index:2000;}
+nav{position:fixed;width:100%;top:0;background:rgba(0,0,0,0.85);padding:20px;display:flex;justify-content:center;gap:40px;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.1);}
+nav a{color:white;text-decoration:none;font-weight:500;}
+nav a:hover{color:#00c6ff;}
 section{min-height:100vh;padding:120px 20px;max-width:1100px;margin:auto;}
 h2{margin-bottom:40px;font-size:32px;border-left:5px solid #00c6ff;padding-left:15px;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
 .card{background:rgba(255,255,255,0.07);padding:30px;border-radius:20px;transition:0.3s;}
 .card:hover{transform:translateY(-8px);background:rgba(255,255,255,0.15);}
 footer{text-align:center;padding:40px;background:black;}
+#entrada,#adminLogin,#perfilEdit{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,32,39,0.97);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:10000;}
+#entrada input,#adminLogin input,#perfilEdit input,#perfilEdit textarea{padding:10px 15px;margin:10px 0;border-radius:8px;border:none;width:250px;}
+button{padding:12px 25px;border:none;border-radius:30px;background:#00c6ff;color:black;font-weight:bold;cursor:pointer;}
+button:hover{background:white;}
+#logoutBtn{position:fixed;top:20px;right:20px;background:red;color:white;z-index:2000;display:none;}
 #adminPanel{display:none;padding:50px;background:#f0f0f0;color:black;min-height:100vh;}
 .admin-tabs{display:flex;gap:20px;margin-bottom:30px;}
 .admin-tab{padding:10px 20px;background:#00c6ff;color:black;border-radius:10px;cursor:pointer;font-weight:bold;}
 .admin-tab.active{background:#005f7f;color:white;}
 .admin-content{background:white;color:black;padding:20px;border-radius:15px;}
-.google-login{margin-top:10px;background:#4285F4;color:white;}
-.google-login:hover{background:#2a6adf;}
+#perfilEdit{display:none;}
 </style>
 </head>
 <body>
 
+<!-- ENTRADA USUÁRIO -->
 <div id="entrada">
 <h2>Digite seu nome e idade</h2>
 <input type="text" id="nome" placeholder="Seu nome">
 <input type="number" id="idade" placeholder="Sua idade">
 <button onclick="entrar()">Entrar Offline</button>
-<button class="google-login" onclick="loginGoogle()">Entrar com Google (Online)</button>
 <a href="#" onclick="abrirAdmin()">Sou Admin</a>
 </div>
 
+<!-- LOGIN ADMIN -->
 <div id="adminLogin" style="display:none;">
 <h2>Login Admin</h2>
 <input type="text" id="adminNome" placeholder="Nome">
@@ -54,7 +53,23 @@ footer{text-align:center;padding:40px;background:black;}
 <button onclick="loginAdmin()">Entrar Admin</button>
 </div>
 
-<button id="logoutBtn" onclick="sair()" style="display:none;">Sair</button>
+<!-- EDITAR PERFIL -->
+<div id="perfilEdit">
+<h2>Editar Perfil</h2>
+<input type="text" id="editNome" placeholder="Nome">
+<input type="number" id="editIdade" placeholder="Idade">
+<textarea id="editInfo" placeholder="Informações sobre você"></textarea>
+<label>Escolha cor de fundo: </label>
+<input type="color" id="bgColor">
+<label>Ou imagem de fundo (URL): </label>
+<input type="text" id="bgImage" placeholder="Link da imagem">
+<label>Foto de Perfil: </label>
+<input type="file" id="profilePic" accept="image/*">
+<button onclick="salvarPerfil()">Salvar</button>
+<button onclick="fecharPerfil()">Cancelar</button>
+</div>
+
+<button id="logoutBtn" onclick="sair()">Sair</button>
 
 <div id="site" style="display:none;">
 <nav>
@@ -63,18 +78,17 @@ footer{text-align:center;padding:40px;background:black;}
 <a href="#habilidades">Habilidades</a>
 <a href="#contato">Contato</a>
 <a href="#adminPanelSection">Admin</a>
+<a href="#" onclick="abrirEditarPerfil()">Editar Perfil</a>
 </nav>
 
-<header>
+<header id="headerSite">
 <h1>Joanderson <span>Leal</span></h1>
 <p id="horaAtual"></p>
 </header>
 
 <section id="sobre">
 <h2>Sobre Mim</h2>
-<div class="card">
-Sou cristão, Técnico em Informática pelo IFBA, estudante de Redes de Computadores e apaixonado por tecnologia e ensino.
-Meu objetivo é crescer na área tech e atuar profissionalmente também de forma remota.
+<div class="card" id="sobreCard">
 </div>
 </section>
 
@@ -111,7 +125,7 @@ Meu objetivo é crescer na área tech e atuar profissionalmente também de forma
 <section id="adminPanelSection">
 <div id="adminPanel">
 <div class="admin-tabs">
-<div class="admin-tab active" onclick="abrirTab(0)">Visitantes</div>
+<div class="admin-tab active" onclick="abrirTab(0)">Usuários</div>
 <div class="admin-tab" onclick="abrirTab(1)">Data/Hora</div>
 </div>
 <div class="admin-content" id="adminContent"></div>
@@ -123,28 +137,30 @@ Meu objetivo é crescer na área tech e atuar profissionalmente também de forma
 </footer>
 
 <script>
-// DATA E HORA
+// DATA/HORA
 function atualizarHora(){
 const now=new Date();
-document.getElementById("horaAtual").textContent=
-"Hoje: "+now.toLocaleDateString()+" | Hora: "+now.toLocaleTimeString();
+document.getElementById("horaAtual").textContent="Hoje: "+now.toLocaleDateString()+" | Hora: "+now.toLocaleTimeString();
 }
 setInterval(atualizarHora,1000);
 atualizarHora();
 
-// LOGIN USUÁRIO OFFLINE
+// LOGIN OFFLINE
 function entrar(){
 const nome=document.getElementById("nome").value.trim();
 const idade=document.getElementById("idade").value.trim();
 if(!nome||!idade){alert("Preencha tudo");return;}
+let usuarios=JSON.parse(localStorage.getItem("usuarios"))||{};
+if(!usuarios[nome]){
+usuarios[nome]={idade,info:"",bgColor:"#0f2027",bgImage:"",profilePic:""};
+localStorage.setItem("usuarios",JSON.stringify(usuarios));
+}
 localStorage.setItem("usuarioAtivo",nome);
-let visitantes=JSON.parse(localStorage.getItem("visitantes"))||[];
-visitantes.push({nome,idade,data:new Date().toLocaleString()});
-localStorage.setItem("visitantes",JSON.stringify(visitantes));
+carregarPerfil();
 mostrarSite();
 }
 
-// LOGIN ADMIN
+// ADMIN
 function abrirAdmin(){
 document.getElementById("entrada").style.display="none";
 document.getElementById("adminLogin").style.display="flex";
@@ -158,13 +174,6 @@ mostrarSite();
 }else{alert("Nome ou senha incorretos!");}
 }
 
-// LOGIN GOOGLE (ONLINE) – apenas demonstração
-function loginGoogle(){
-alert("Login Google ativado! (Requer internet real)");
-localStorage.setItem("usuarioAtivo","GoogleUser");
-mostrarSite();
-}
-
 // MOSTRAR SITE
 function mostrarSite(){
 document.getElementById("entrada").style.display="none";
@@ -175,6 +184,7 @@ if(localStorage.getItem("adminAtivo")){
 document.getElementById("adminPanel").style.display="block";
 }else{document.getElementById("adminPanel").style.display="none";}
 abrirTab(0);
+carregarPerfil();
 }
 
 // SAIR
@@ -186,14 +196,68 @@ document.getElementById("logoutBtn").style.display="none";
 document.getElementById("entrada").style.display="flex";
 }
 
+// PERFIL EDIT
+function abrirEditarPerfil(){
+document.getElementById("perfilEdit").style.display="flex";
+const nome=localStorage.getItem("usuarioAtivo");
+const usuarios=JSON.parse(localStorage.getItem("usuarios"))||{};
+if(usuarios[nome]){
+document.getElementById("editNome").value=nome;
+document.getElementById("editIdade").value=usuarios[nome].idade;
+document.getElementById("editInfo").value=usuarios[nome].info;
+document.getElementById("bgColor").value=usuarios[nome].bgColor;
+document.getElementById("bgImage").value=usuarios[nome].bgImage;
+}
+}
+function fecharPerfil(){
+document.getElementById("perfilEdit").style.display="none";
+}
+function salvarPerfil(){
+const nome= document.getElementById("editNome").value.trim();
+const idade= document.getElementById("editIdade").value.trim();
+const info= document.getElementById("editInfo").value;
+const bgColor= document.getElementById("bgColor").value;
+const bgImage= document.getElementById("bgImage").value;
+const file=document.getElementById("profilePic").files[0];
+let profilePic="";
+if(file){
+const reader=new FileReader();
+reader.onload=function(e){
+profilePic=e.target.result;
+finalizarSalvar(nome,idade,info,bgColor,bgImage,profilePic);
+};
+reader.readAsDataURL(file);
+}else{
+finalizarSalvar(nome,idade,info,bgColor,bgImage,"");
+}
+}
+function finalizarSalvar(nome,idade,info,bgColor,bgImage,profilePic){
+const usuarios=JSON.parse(localStorage.getItem("usuarios"))||{};
+usuarios[nome]={idade,info,bgColor,bgImage,profilePic};
+localStorage.setItem("usuarios",JSON.stringify(usuarios));
+localStorage.setItem("usuarioAtivo",nome);
+carregarPerfil();
+fecharPerfil();
+alert("Perfil salvo!");
+}
+function carregarPerfil(){
+const nome=localStorage.getItem("usuarioAtivo");
+const usuarios=JSON.parse(localStorage.getItem("usuarios"))||{};
+if(usuarios[nome]){
+const user=usuarios[nome];
+document.getElementById("sobreCard").innerHTML=`<img src="${user.profilePic}" alt="Perfil" style="width:100px;height:100px;border-radius:50%;"><br>Nome: ${nome}<br>Idade: ${user.idade}<br>${user.info}`;
+document.getElementById("headerSite").style.background=user.bgImage?`url('${user.bgImage}') center/cover`:`${user.bgColor}`;
+}
+}
+
 // ADMIN TABS
 function abrirTab(index){
 const tabs=document.querySelectorAll(".admin-tab");
 tabs.forEach((t,i)=>t.classList.toggle("active",i===index));
 const content=document.getElementById("adminContent");
-if(index===0){
-let visitantes=JSON.parse(localStorage.getItem("visitantes"))||[];
-content.innerHTML=visitantes.length===0?"Nenhum visitante ainda.":visitantes.map(v=>`Nome: ${v.nome} | Idade: ${v.idade} | Acesso: ${v.data}`).join("<br>");
+if(index===0){ // Usuários
+const usuarios=JSON.parse(localStorage.getItem("usuarios"))||{};
+content.innerHTML=Object.entries(usuarios).map(([nome,data])=>`Nome: ${nome} | Idade: ${data.idade} | Info: ${data.info}`).join("<br>")||"Nenhum usuário ainda.";
 }else if(index===1){
 const now=new Date();
 content.innerHTML=`Data Atual: ${now.toLocaleDateString()}<br>Hora Atual: ${now.toLocaleTimeString()}`;
