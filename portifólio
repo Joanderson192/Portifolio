@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joanderson Leal | Portfólio</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+scroll-behavior:smooth;
+}
+
+nav{
+position:fixed;
+width:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter: blur(10px);
+padding:15px;
+display:flex;
+justify-content:center;
+gap:30px;
+z-index:1000;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#00c6ff;
+}
+
+header{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+header h1{
+font-size:45px;
+margin-bottom:10px;
+}
+
+header p{
+opacity:0.9;
+margin-bottom:20px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 22px;
+margin:10px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn-primary{
+background:#00c6ff;
+color:black;
+}
+
+.btn-primary:hover{
+background:white;
+}
+
+.btn-outline{
+border:2px solid #00c6ff;
+color:white;
+}
+
+.btn-outline:hover{
+background:#00c6ff;
+color:black;
+}
+
+section{
+padding:100px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+h2{
+margin-bottom:30px;
+border-left:5px solid #00c6ff;
+padding-left:10px;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+padding:25px;
+margin-bottom:20px;
+border-radius:15px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+background:rgba(255,255,255,0.15);
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:rgba(0,0,0,0.5);
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px 20px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,0.4);
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+@media(max-width:768px){
+header h1{font-size:30px;}
+nav{gap:15px;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="#sobre">Sobre</a>
+<a href="#projetos">Projetos</a>
+<a href="#habilidades">Habilidades</a>
+<a href="#contato">Contato</a>
+</nav>
+
+<header>
+<h1>Joanderson Leal</h1>
+<p>Professor de Informática | Tecnologia & Educação</p>
+
+<a href="https://github.com/Joanderson192" target="_blank" class="btn btn-primary">
+GitHub
+</a>
+
+<a href="#contato" class="btn btn-outline">
+Fale Comigo
+</a>
+</header>
+
+<section id="sobre">
+<h2>Sobre Mim</h2>
+<div class="card">
+Sou cristão, apaixonado por ensinar e pela tecnologia.
+Técnico em Informática pelo IFBA.
+Estudante de Redes de Computadores.
+Meu objetivo é crescer na área tech e atuar também remotamente.
+</div>
+</section>
+
+<section id="projetos">
+<h2>Projetos</h2>
+
+<div class="card">
+<h3>Sistema de Leads em Python</h3>
+Projeto focado em automação e gerenciamento de clientes.
+</div>
+
+<div class="card">
+<h3>Projetos Avançados em Excel</h3>
+Planilhas inteligentes com automação e organização de dados.
+</div>
+
+</section>
+
+<section id="habilidades">
+<h2>Habilidades Técnicas</h2>
+
+<div class="card">
+Windows 10/11 – Avançado<br>
+Linux Ubuntu – Básico<br>
+Excel – Avançado<br>
+Python – Básico<br>
+HTML – Intermediário<br>
+CSS – Básico
+</div>
+
+</section>
+
+<section id="contato">
+<h2>Contato</h2>
+
+<div class="card">
+📍 Santo Estêvão – BA<br>
+📧 Joandersonleal192@gmail.com<br>
+📸 Instagram: @Jo.andersonleal
+</div>
+
+<a href="https://wa.me/5575983534628?text=Olá%20Professor%20Joanderson,%20vi%20seu%20portfólio%20e%20quero%20falar%20com%20você."
+target="_blank"
+class="btn btn-primary">
+Falar no WhatsApp
+</a>
+
+</section>
+
+<footer>
+© 2026 Joanderson Leal | Todos os direitos reservados
+</footer>
+
+<a href="https://wa.me/5575983534628?text=Olá%20Professor%20Joanderson"
+target="_blank"
+class="whatsapp">
+WhatsApp
+</a>
+
+</body>
+</html>
