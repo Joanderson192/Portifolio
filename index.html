@@ -7,272 +7,196 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 html{scroll-behavior:smooth;scroll-padding-top:100px;}
 body{background:#0f2027;color:white;}
-/* TELA DE ENTRADA */
-#entrada,#adminLogin{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,32,39,0.95);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:10000;}
-#entrada h2,#adminLogin h2{margin-bottom:20px;color:#00c6ff;}
-#entrada input,#adminLogin input{padding:10px 15px;margin:10px 0;border-radius:8px;border:none;width:250px;}
-#entrada button,#adminLogin button{padding:12px 25px;border:none;border-radius:30px;background:#00c6ff;color:black;font-weight:bold;cursor:pointer;transition:0.3s;}
-#entrada button:hover,#adminLogin button:hover{background:white;}
 
-/* NAVBAR */
-nav{position:fixed;width:100%;top:0;background:rgba(0,0,0,0.85);padding:20px;display:flex;justify-content:center;gap:40px;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.1);}
-nav a{color:white;text-decoration:none;font-weight:500;transition:0.3s;}
-nav a:hover{color:#00c6ff;}
+/* TELAS */
+#entrada,#adminLogin{
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(15,32,39,0.97);
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+z-index:10000;
+}
 
-/* HERO */
-header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);}
-header h1{font-size:50px;font-weight:700;}
-header span{color:#00c6ff;}
-header p{margin-top:15px;opacity:0.9;}
-.btn{display:inline-block;padding:14px 28px;border-radius:40px;margin:25px 10px 0 10px;text-decoration:none;font-weight:600;transition:0.3s;}
-.btn-primary{background:#00c6ff;color:black;}
-.btn-primary:hover{background:white;}
-.btn-outline{border:2px solid #00c6ff;color:white;}
-.btn-outline:hover{background:#00c6ff;color:black;}
+#entrada input,#adminLogin input{
+padding:10px 15px;margin:10px 0;border-radius:8px;border:none;width:250px;
+}
 
-/* SECTIONS */
-section{min-height:100vh;padding:120px 20px;display:flex;flex-direction:column;justify-content:center;max-width:1100px;margin:auto;}
-section:nth-child(even){background:#112b3c;}
-h2{margin-bottom:40px;font-size:32px;border-left:5px solid #00c6ff;padding-left:15px;}
+button{
+padding:12px 25px;border:none;border-radius:30px;
+background:#00c6ff;color:black;font-weight:bold;cursor:pointer;
+}
 
-/* CARDS */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
-.card{background:rgba(255,255,255,0.07);padding:30px;border-radius:20px;transition:0.3s;}
-.card:hover{transform:translateY(-8px);background:rgba(255,255,255,0.15);}
+button:hover{background:white;}
 
-/* FOOTER */
+nav{
+position:fixed;width:100%;top:0;background:rgba(0,0,0,0.85);
+padding:20px;display:flex;justify-content:center;gap:40px;
+z-index:1000;border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+nav a{color:white;text-decoration:none;}
+
+header{
+height:100vh;display:flex;flex-direction:column;
+justify-content:center;align-items:center;text-align:center;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+.btn{
+display:inline-block;padding:12px 25px;border-radius:30px;
+margin-top:20px;text-decoration:none;font-weight:600;
+background:#00c6ff;color:black;
+}
+
+#logoutBtn{
+position:fixed;
+top:20px;
+right:20px;
+background:red;
+color:white;
+z-index:2000;
+}
+
+section{min-height:100vh;padding:120px 20px;max-width:1100px;margin:auto;}
+
 footer{text-align:center;padding:40px;background:black;}
-
-/* WHATSAPP */
-.whatsapp{position:fixed;bottom:25px;right:25px;background:#25D366;color:white;padding:16px 22px;border-radius:50px;text-decoration:none;font-weight:bold;box-shadow:0 5px 15px rgba(0,0,0,0.4);}
-
-/* ADMIN TABS */
-#adminPanel{display:none;padding:50px;color:black;background:#f0f0f0;min-height:100vh;}
-.admin-tabs{display:flex;gap:20px;margin-bottom:30px;}
-.admin-tab{padding:10px 20px;background:#00c6ff;color:black;border-radius:10px;cursor:pointer;font-weight:bold;}
-.admin-tab.active{background:#005f7f;color:white;}
-.admin-content{background:white;color:black;padding:20px;border-radius:15px;}
-
-/* RESPONSIVO */
-@media(max-width:768px){header h1{font-size:32px;} nav{gap:15px;}}
 </style>
 </head>
+
 <body>
 
-<!-- TELA DE ENTRADA -->
+<!-- TELA ENTRADA -->
 <div id="entrada">
-<h2>Bem-vindo! Informe seu nome e idade</h2>
-<input type="text" id="nome" placeholder="Seu nome">
-<input type="number" id="idade" placeholder="Sua idade">
+<h2>Digite seu nome e idade</h2>
+<input type="text" id="nome">
+<input type="number" id="idade">
 <button onclick="entrar()">Entrar</button>
-<a href="#" onclick="abrirAdminLogin()" style="margin-top:15px;color:#00c6ff;">Sou Admin</a>
+<a href="#" onclick="abrirAdmin()">Sou Admin</a>
 </div>
 
 <!-- LOGIN ADMIN -->
-<div id="adminLogin">
+<div id="adminLogin" style="display:none;">
 <h2>Login Admin</h2>
-<input type="text" id="adminNome" placeholder="Seu nome">
-<input type="number" id="adminIdade" placeholder="Sua idade">
-<input type="text" id="adminSenha" placeholder="Data de nascimento (DDMMAAAA)">
-<button onclick="entrarAdmin()">Entrar como Admin</button>
+<input type="text" id="adminNome" placeholder="Nome">
+<input type="text" id="adminSenha" placeholder="Data nascimento">
+<button onclick="loginAdmin()">Entrar Admin</button>
 </div>
 
-<!-- SITE COMPLETO -->
+<!-- BOTÃO SAIR -->
+<button id="logoutBtn" onclick="sair()" style="display:none;">Sair</button>
+
+<!-- SITE -->
 <div id="site" style="display:none;">
 
 <nav>
 <a href="#sobre">Sobre</a>
 <a href="#projetos">Projetos</a>
-<a href="#habilidades">Habilidades</a>
 <a href="#contato">Contato</a>
-<a href="#adminPanelSection">Admin</a>
 </nav>
 
 <header>
-<h1>Joanderson <span>Leal</span></h1>
-<p>Professor de Informática • Tecnologia • Educação</p>
-
-<a href="https://github.com/Joanderson192" target="_blank" class="btn btn-primary">
-GitHub
-</a>
-
-<a href="#contato" class="btn btn-outline">
-Fale Comigo
-</a>
-
-<p id="horaAtual" style="margin-top:15px;color:#00c6ff;"></p>
+<h1>Joanderson Leal</h1>
+<p id="hora"></p>
 </header>
 
 <section id="sobre">
-<h2>Sobre Mim</h2>
-<div class="card">
-Sou cristão, Técnico em Informática pelo IFBA, estudante de Redes de Computadores e apaixonado por tecnologia e ensino.
-Meu objetivo é crescer na área tech e atuar profissionalmente também de forma remota.
-</div>
+<h2>Sobre</h2>
+<p>Professor de Informática • Tecnologia • Educação</p>
 </section>
 
 <section id="projetos">
 <h2>Projetos</h2>
-<div class="grid">
-<div class="card">
-<h3>Sistema de Leads em Python</h3>
-Automação para gerenciamento de clientes.
-</div>
-<div class="card">
-<h3>Excel Avançado</h3>
-Planilhas automatizadas e análise de dados.
-</div>
-</div>
-</section>
-
-<section id="habilidades">
-<h2>Habilidades</h2>
-<div class="grid">
-<div class="card">
-Windows 10/11 – Avançado<br>
-Linux Ubuntu – Básico
-</div>
-<div class="card">
-Excel – Avançado<br>
-Pacote Office
-</div>
-<div class="card">
-Python – Básico<br>
-HTML – Intermediário<br>
-CSS – Básico
-</div>
-</div>
+<p>Sistema de Leads em Python • Excel Avançado</p>
 </section>
 
 <section id="contato">
 <h2>Contato</h2>
-<div class="card">
-📍 Santo Estêvão – BA<br>
-📧 Joandersonleal192@gmail.com<br>
-📸 @Jo.andersonleal
-</div>
-
-<a href="https://wa.me/5575983534628?text=Olá%20Professor%20Joanderson,%20vi%20seu%20portfólio"
-target="_blank"
-class="btn btn-primary">
-WhatsApp
-</a>
-
-</section>
-
-<!-- ADMIN PANEL -->
-<section id="adminPanelSection">
-<div id="adminPanel">
-<div class="admin-tabs">
-<div class="admin-tab active" onclick="abrirTab(0)">Visitantes</div>
-<div class="admin-tab" onclick="abrirTab(1)">Data/Hora</div>
-<div class="admin-tab" onclick="abrirTab(2)">Login Google</div>
-</div>
-
-<div class="admin-content" id="adminContent">
-<!-- Conteúdo das abas vai aqui -->
-</div>
-</div>
+<p>Santo Estêvão – BA</p>
 </section>
 
 <footer>
 © 2026 Joanderson Leal
 </footer>
 
-<a href="https://wa.me/5575983534628?text=Olá%20Professor%20Joanderson"
-target="_blank"
-class="whatsapp">
-WhatsApp
-</a>
+</div>
 
 <script>
-// Mostrar hora atual
-function atualizarHora() {
-  const now = new Date();
-  const hora = now.toLocaleTimeString();
-  const data = now.toLocaleDateString();
-  document.getElementById('horaAtual').textContent = `Hoje: ${data} | Hora: ${hora}`;
+
+/* DATA E HORA */
+function atualizarHora(){
+const now = new Date();
+document.getElementById("hora").innerText =
+"Hoje: " + now.toLocaleDateString() +
+" | Hora: " + now.toLocaleTimeString();
 }
 setInterval(atualizarHora,1000);
-atualizarHora();
 
-// Entrar como usuário
+/* ENTRAR USUÁRIO */
 function entrar(){
-  const nome = document.getElementById('nome').value.trim();
-  const idade = document.getElementById('idade').value.trim();
-  if(!nome||!idade){alert("Preencha nome e idade");return;}
-  // Salvar no localStorage
-  let visitantes = JSON.parse(localStorage.getItem('visitantes'))||[];
-  visitantes.push({nome,idade,data:new Date().toLocaleString()});
-  localStorage.setItem('visitantes',JSON.stringify(visitantes));
+const nome=document.getElementById("nome").value;
+const idade=document.getElementById("idade").value;
+if(!nome||!idade){alert("Preencha tudo");return;}
 
-  document.getElementById('entrada').style.display='none';
-  document.getElementById('site').style.display='block';
+localStorage.setItem("usuarioAtivo",nome);
+
+let visitantes=JSON.parse(localStorage.getItem("visitantes"))||[];
+visitantes.push({
+nome,
+idade,
+data:new Date().toLocaleString()
+});
+localStorage.setItem("visitantes",JSON.stringify(visitantes));
+
+mostrarSite();
 }
 
-// Abrir login admin
-function abrirAdminLogin(){
-  document.getElementById('entrada').style.display='none';
-  document.getElementById('adminLogin').style.display='flex';
+/* ADMIN */
+function abrirAdmin(){
+document.getElementById("entrada").style.display="none";
+document.getElementById("adminLogin").style.display="flex";
 }
 
-// Entrar como Admin
-function entrarAdmin(){
-  const nome = document.getElementById('adminNome').value.trim();
-  const idade = document.getElementById('adminIdade').value.trim();
-  const senha = document.getElementById('adminSenha').value.trim();
-  if(!nome||!idade||!senha){alert("Preencha todos os campos");return;}
-  // Salvar admin no localStorage (só você)
-  localStorage.setItem('admin',{nome,idade,senha});
-  alert("Admin cadastrado com sucesso! A partir de agora use seu nome e data de nascimento para entrar.");
-  document.getElementById('adminLogin').style.display='none';
-  document.getElementById('site').style.display='block';
+function loginAdmin(){
+const nome=document.getElementById("adminNome").value;
+const senha=document.getElementById("adminSenha").value;
+
+const adminSalvo=JSON.parse(localStorage.getItem("admin"));
+
+if(!adminSalvo){
+localStorage.setItem("admin",JSON.stringify({nome,senha}));
+alert("Admin cadastrado!");
+}else{
+if(nome!==adminSalvo.nome||senha!==adminSalvo.senha){
+alert("Dados incorretos");
+return;
+}
 }
 
-// Admin tabs
-function abrirTab(index){
-  const tabs = document.querySelectorAll('.admin-tab');
-  tabs.forEach((t,i)=>t.classList.toggle('active',i===index));
-  const content = document.getElementById('adminContent');
-  if(index===0){ // Visitantes
-    let visitantes = JSON.parse(localStorage.getItem('visitantes'))||[];
-    content.innerHTML = visitantes.map(v=>`Nome: ${v.nome} | Idade: ${v.idade} | Acessou em: ${v.data}`).join('<br>');
-  } else if(index===1){ // Data/Hora
-    const now = new Date();
-    content.innerHTML = `Data Atual: ${now.toLocaleDateString()}<br>Hora Atual: ${now.toLocaleTimeString()}`;
-  } else if(index===2){ // Login Google (simulado)
-    content.innerHTML = `<button onclick="loginGoogle()">Entrar com Google</button>`;
-  }
+localStorage.setItem("adminAtivo","true");
+mostrarSite();
 }
 
-// Login Google via Firebase
-const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_PROJETO.firebaseapp.com",
-  projectId: "SEU_PROJETO",
-  storageBucket: "SEU_PROJETO.appspot.com",
-  messagingSenderId: "SEU_ID",
-  appId: "SEU_APP_ID"
-};
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-
-function loginGoogle(){
-  const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider)
-    .then((result)=>{
-      alert("Login Google feito com sucesso: "+result.user.displayName);
-    }).catch((error)=>{
-      alert("Erro no login Google: "+error.message);
-    });
+/* MOSTRAR SITE */
+function mostrarSite(){
+document.getElementById("entrada").style.display="none";
+document.getElementById("adminLogin").style.display="none";
+document.getElementById("site").style.display="block";
+document.getElementById("logoutBtn").style.display="block";
 }
+
+/* SAIR */
+function sair(){
+localStorage.removeItem("usuarioAtivo");
+localStorage.removeItem("adminAtivo");
+
+document.getElementById("site").style.display="none";
+document.getElementById("logoutBtn").style.display="none";
+document.getElementById("entrada").style.display="flex";
+}
+
 </script>
 
 </body>
