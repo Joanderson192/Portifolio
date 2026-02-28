@@ -5,36 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joanderson Leal | Portfólio</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family: 'Segoe UI', sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 color:white;
 scroll-behavior:smooth;
 }
 
+/* NAVBAR */
 nav{
 position:fixed;
 width:100%;
+top:0;
 background:rgba(0,0,0,0.6);
-backdrop-filter: blur(10px);
-padding:15px;
+backdrop-filter:blur(10px);
 display:flex;
 justify-content:center;
-gap:30px;
+gap:40px;
+padding:18px;
 z-index:1000;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-font-weight:600;
+font-weight:500;
 transition:0.3s;
 }
 
@@ -42,6 +46,7 @@ nav a:hover{
 color:#00c6ff;
 }
 
+/* HERO */
 header{
 height:100vh;
 display:flex;
@@ -53,22 +58,27 @@ padding:20px;
 }
 
 header h1{
-font-size:45px;
-margin-bottom:10px;
+font-size:55px;
+font-weight:700;
+}
+
+header span{
+color:#00c6ff;
 }
 
 header p{
+margin-top:15px;
 opacity:0.9;
-margin-bottom:20px;
+font-size:18px;
 }
 
 .btn{
 display:inline-block;
-padding:12px 22px;
-margin:10px;
-border-radius:30px;
+padding:14px 28px;
+border-radius:40px;
+margin:20px 10px 0 10px;
 text-decoration:none;
-font-weight:bold;
+font-weight:600;
 transition:0.3s;
 }
 
@@ -91,48 +101,59 @@ background:#00c6ff;
 color:black;
 }
 
+/* SECTIONS */
 section{
-padding:100px 20px;
+padding:120px 20px;
 max-width:1100px;
 margin:auto;
 }
 
 h2{
-margin-bottom:30px;
+margin-bottom:40px;
+font-size:32px;
 border-left:5px solid #00c6ff;
-padding-left:10px;
+padding-left:15px;
+}
+
+/* CARDS */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 }
 
 .card{
 background:rgba(255,255,255,0.08);
-padding:25px;
-margin-bottom:20px;
-border-radius:15px;
-transition:0.3s;
+padding:30px;
+border-radius:20px;
+transition:0.4s;
+backdrop-filter:blur(10px);
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-8px);
 background:rgba(255,255,255,0.15);
 }
 
+/* FOOTER */
 footer{
 text-align:center;
-padding:30px;
+padding:40px;
 background:rgba(0,0,0,0.5);
 }
 
+/* WHATSAPP FLOAT */
 .whatsapp{
 position:fixed;
-bottom:20px;
-right:20px;
+bottom:25px;
+right:25px;
 background:#25D366;
 color:white;
-padding:15px 20px;
+padding:16px 22px;
 border-radius:50px;
 text-decoration:none;
 font-weight:bold;
-box-shadow:0 4px 10px rgba(0,0,0,0.4);
+box-shadow:0 5px 15px rgba(0,0,0,0.4);
 animation:pulse 1.5s infinite;
 }
 
@@ -143,7 +164,7 @@ animation:pulse 1.5s infinite;
 }
 
 @media(max-width:768px){
-header h1{font-size:30px;}
+header h1{font-size:35px;}
 nav{gap:15px;}
 }
 </style>
@@ -159,8 +180,8 @@ nav{gap:15px;}
 </nav>
 
 <header>
-<h1>Joanderson Leal</h1>
-<p>Professor de Informática | Tecnologia & Educação</p>
+<h1>Joanderson <span>Leal</span></h1>
+<p>Professor de Informática • Tecnologia • Educação • Programação</p>
 
 <a href="https://github.com/Joanderson192" target="_blank" class="btn btn-primary">
 GitHub
@@ -174,48 +195,62 @@ Fale Comigo
 <section id="sobre">
 <h2>Sobre Mim</h2>
 <div class="card">
-Sou cristão, apaixonado por ensinar e pela tecnologia.
+Sou cristão, apaixonado por ensinar e transformar vidas através da tecnologia.
 Técnico em Informática pelo IFBA.
 Estudante de Redes de Computadores.
-Meu objetivo é crescer na área tech e atuar também remotamente.
+Busco crescimento profissional na área Tech e atuação remota.
 </div>
 </section>
 
 <section id="projetos">
 <h2>Projetos</h2>
+<div class="grid">
 
 <div class="card">
 <h3>Sistema de Leads em Python</h3>
-Projeto focado em automação e gerenciamento de clientes.
+<p>Automação e gerenciamento de clientes utilizando programação.</p>
 </div>
 
 <div class="card">
 <h3>Projetos Avançados em Excel</h3>
-Planilhas inteligentes com automação e organização de dados.
+<p>Planilhas inteligentes com organização, automação e análise de dados.</p>
 </div>
 
+</div>
 </section>
 
 <section id="habilidades">
 <h2>Habilidades Técnicas</h2>
+<div class="grid">
 
 <div class="card">
+<h3>Sistemas Operacionais</h3>
 Windows 10/11 – Avançado<br>
-Linux Ubuntu – Básico<br>
+Linux Ubuntu – Básico
+</div>
+
+<div class="card">
+<h3>Ferramentas</h3>
 Excel – Avançado<br>
+Pacote Office<br>
+CRM
+</div>
+
+<div class="card">
+<h3>Programação</h3>
 Python – Básico<br>
 HTML – Intermediário<br>
 CSS – Básico
 </div>
 
+</div>
 </section>
 
 <section id="contato">
 <h2>Contato</h2>
-
 <div class="card">
-📍 Santo Estêvão – BA<br>
-📧 Joandersonleal192@gmail.com<br>
+📍 Santo Estêvão – BA<br><br>
+📧 Joandersonleal192@gmail.com<br><br>
 📸 Instagram: @Jo.andersonleal
 </div>
 
@@ -228,7 +263,7 @@ Falar no WhatsApp
 </section>
 
 <footer>
-© 2026 Joanderson Leal | Todos os direitos reservados
+© 2026 Joanderson Leal | Desenvolvido por Joanderson
 </footer>
 
 <a href="https://wa.me/5575983534628?text=Olá%20Professor%20Joanderson"
