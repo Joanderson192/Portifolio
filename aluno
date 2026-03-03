@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alunos para Início em Março</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.container {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 1200px;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+h1 {
+    text-align: center;
+    color: #2c5364;
+}
+
+.sub {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 18px;
+}
+
+.counter {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #2c5364;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f2f2f2;
+}
+
+.btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.whatsapp {
+    background-color: #25D366;
+}
+
+.status {
+    background-color: #007bff;
+    cursor: pointer;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>📚 Alunos para Início em Março</h1>
+<p class="sub">Formação de Turma - Nutrição</p>
+
+<div id="contador" class="counter"></div>
+
+<input type="text" id="search" placeholder="Pesquisar por nome ou curso..." onkeyup="filtrar()">
+
+<table id="tabela">
+<thead>
+<tr>
+<th>Nome</th>
+<th>Contato</th>
+<th>Curso</th>
+<th>WhatsApp</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Dona Lucineia</td>
+<td>75999999999</td>
+<td>Nutrição</td>
+<td><a class="btn whatsapp" target="_blank" href="https://wa.me/5575999999999">Enviar</a></td>
+<td><button class="status" onclick="marcar(this)">Pré-Matrícula</button></td>
+</tr>
+
+<tr>
+<td>Aluno 2</td>
+<td>75988888888</td>
+<td>Nutrição</td>
+<td><a class="btn whatsapp" target="_blank" href="https://wa.me/5575988888888">Enviar</a></td>
+<td><button class="status" onclick="marcar(this)">Pré-Matrícula</button></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<script>
+
+const minimoAlunos = 15;
+
+function atualizarContador() {
+    let linhas = document.querySelectorAll("#tabela tbody tr");
+    let total = linhas.length;
+    let faltam = minimoAlunos - total;
+
+    let contador = document.getElementById("contador");
+
+    if (faltam > 0) {
+        contador.innerHTML = `👥 ${total} alunos cadastrados | Faltam ${faltam} alunos para abrir a turma`;
+        contador.style.background = "#ffeeba";
+        contador.style.color = "#856404";
+    } else {
+        contador.innerHTML = `✅ Turma confirmada com ${total} alunos!`;
+        contador.style.background = "#d4edda";
+        contador.style.color = "#155724";
+    }
+}
+
+function filtrar() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let linhas = document.querySelectorAll("#tabela tbody tr");
+
+    linhas.forEach(linha => {
+        let texto = linha.innerText.toLowerCase();
+        linha.style.display = texto.includes(input) ? "" : "none";
+    });
+}
+
+function marcar(botao) {
+    if (botao.innerText === "Pré-Matrícula") {
+        botao.innerText = "Confirmado";
+        botao.style.backgroundColor = "green";
+    } else {
+        botao.innerText = "Pré-Matrícula";
+        botao.style.backgroundColor = "#007bff";
+    }
+}
+
+atualizarContador();
+
+</script>
+
+</body>
+</html>
